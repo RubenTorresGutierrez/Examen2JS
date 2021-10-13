@@ -1,12 +1,27 @@
-/*
-  Ejercicio 1
-  Crea una función que reciba un lista de números reales y devuelva su suma.
-  Si no es posible realizar la operación la función lanzará una excepción.
+/*  ejercicio1.js
+    Examen 2 | Ejercicio 1
+    Crea una función que reciba un lista de números reales y devuelva su suma.
+    Si no es posible realizar la operación la función lanzará una excepción.
+    Autor: Rubén Torres Gutiérrez <rtorresgutierrez.guadalupe@alumnado.fundacionloyola.net>
+    Licencia: GPL v3 o superior
+    Año: 2021
 */
 
 'use strict'
 
-//Declara aquí la función
+function sumar(lista){
+
+  //Variables
+  let suma = 0;
+  try {
+    for(let i=0; i<lista.length; i++)
+      suma += lista[i];
+  } catch (error) {
+    suma = error;
+  }
+  return suma;
+
+}
 
 // Programa de prueba
 const ERROR = Symbol()

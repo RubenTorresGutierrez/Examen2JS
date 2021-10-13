@@ -1,13 +1,17 @@
-/*
-  Ejercicio 4
-  Corrige los 5 errores que impiden ejecutar la película.
-
+/*  ejercicio4.js
+    Examen 2 | Ejercicio 4
+    Corrige los 5 errores que impiden ejecutar la película. 2
+    Autor: Rubén Torres Gutiérrez <rtorresgutierrez.guadalupe@alumnado.fundacionloyola.net>
+    Licencia: GPL v3 o superior
+    Año: 2021
 */
+
 'use strict'
 
 class Pelicula {
   constructor() {
-    window.onload =  this.iniciar
+    //Le faltaba .bind(this) para que realmente funcionase y cargase el método iniciar cuando ya se haya cargado todo
+    window.onload = this.iniciar.bind(this);
   }
 
   iniciar(){
@@ -21,21 +25,24 @@ class Pelicula {
       if (p2.vivo)
         p2.dispararA(p1)
     }while (p1.vivo && p2.vivo)
-    console.log('THE END');
+    console.log('THE END')
   }
 }
 
 class Personaje{
-  constructor(){
+  //No se recibía el nombre desde el constructor
+  constructor(nombre){
     this.nombre = nombre
     this.arma = new Arma()
     this.vivo = true
   }
   hablar(texto){
-    console.log('${this.nombre}: "${texto}"' )
+    //El console log estaba con comillas simples y para que ${} funciones, tiene que estar entre ``
+    console.log(`${this.nombre}: "${texto}"` )
   }
   dispararA(personaje){
-    arma.disparar()
+    //Simplemente se llamaba a la propiedad arma, sin indicarle de que objeto personaje era
+    personaje.arma.disparar()
     if (Math.random() < 0.3){
       personaje.hablar('¡Maldita sea! ¡Me has dado!')
       personaje.vivo = false

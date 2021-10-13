@@ -1,12 +1,47 @@
-/*
-  Ejercicio 3
-  Crea las clases del diagrama de clases anexo.
-  Los constructores de cada clase deben inicializar los atributos del objeto.
+/*  ejercicio3.js
+    Examen 2 | Ejercicio 3
+    Crea las clases del diagrama de clases anexo.
+    Los constructores de cada clase deben inicializar los atributos del objeto.
+    Autor: Rubén Torres Gutiérrez <rtorresgutierrez.guadalupe@alumnado.fundacionloyola.net>
+    Licencia: GPL v3 o superior
+    Año: 2021
 */
 
 'use strict'
 
-//Declara aquí las clases
+class Vehiculo{
+
+  constructor(fechaFabricacion){
+    this.fechaFabricacion = fechaFabricacion;
+    this.propietario;
+  }
+  vender(comprador){
+    this.propietario = comprador;
+  }
+
+}
+class Coche extends Vehiculo{
+
+  constructor(fechaFabricacion, matricula, combustible){
+    super(fechaFabricacion);
+    this.matricula = matricula;
+    this.combustible = combustible;
+    this.esNuevo = true;
+  }
+  vender(comprador){
+    super.propietario = comprador;
+    this.esNuevo = false;
+  }
+
+}
+class Bicicleta extends Vehiculo{
+
+  constructor(fechaFabricacion, color){
+    super(fechaFabricacion);
+    this.color = color;
+  }
+  
+}
 
 //Programa de Prueba
 const coche = new Coche(new Date(1995, 11, 17), 'BA-1234-YZ', 'Diesel')
